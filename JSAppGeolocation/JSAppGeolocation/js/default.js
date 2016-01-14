@@ -34,17 +34,18 @@
                     case Windows.Devices.Geolocation.GeolocationAccessStatus.allowed:
 
                         // call the WinRT Component
-                        var rc = RuntimeComponent1.Class1;
+                        var rc = new RuntimeComponent1.Class1();
 
-                        // use promises to wait for completion
-                        rc.getGeopoisitionAsync().then(function (res) {
-                                                      
+                        rc.getPositionAsync2().then(function (res) {
+
                             // access the props of the result
                             var m = new Windows.UI.Popups.MessageDialog(res.coordinate.latitude);
 
                             // show latitude in message box
                             m.showAsync();
 
+                        }, function (err) {
+                            var e = err;
                         });
                      
                         break;
